@@ -1,11 +1,11 @@
 import dotenv from 'dotenv'
-import mongoose, { mongo } from 'mongoose'
-import { DB_name } from './constants.js'
+// import mongoose, { mongo } from 'mongoose'
+// import { DB_name } from './constants.js'
 import connectDB from './db/index.js'
 import { app } from './app.js'
 
 dotenv.config({
-    path: './env'
+    path: './.env'
 })
 
 
@@ -16,6 +16,7 @@ connectDB()
     })
 })
 .catch((err)=>{console.log("The application is not able to connect to the database", err)})
+
 
 /*
 const app = express()

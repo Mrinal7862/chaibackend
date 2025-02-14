@@ -1,6 +1,8 @@
 import { Router } from "express";
-import { registerUser } from "../controllers/user.controller.js";
+import { loggedOutUser, loginUser, registerUser } from "../controllers/user.controller.js";
 import {upload} from '../middlewares/multer.middleware.js'
+// import { verify } from "jsonwebtoken";
+import { verifyJWT } from "../middlewares/auth.middleware.js";
 
 const router = Router();
 
@@ -17,6 +19,13 @@ router.route('/register').post(
     ]),
     registerUser
 )
-// router.route('/login').post(login)
+
+router.route('/login').post(loginUser)
+
+
+//securedRoutes
+router.route('/logout').post(verifyJWT, loggedOutUser) 
+
+// here we'are  downloading each codeblock window 
 
 export default router;
